@@ -5,29 +5,30 @@ import styles from './style';
 
 export default function App() {
   const [inputValue, SetInputValue] = useState('');
-  const [listOfGoals, SetListOfGoals] = useState(['']);
+  const [listOfGoals, SetListOfGoals] = useState([]);
   const goalInputHandler = (val) => {
     SetInputValue(val);
   }
 
   const addGoalHandler = () => {
     SetListOfGoals((prevState) => [...prevState, inputValue])
-    console.log(listOfGoals.length)
+    SetInputValue('');
+  }
+  const onGoalClick=(arrIndex)=>{
+    SetListOfGoals(listOfGoals.filter((_,index)=>index!=arrIndex))
   }
   return (
     <View style={styles.container}>
       <View style={styles.inputContainer}>
-        <TextInput style={styles.textInput} onChange={goalInputHandler} placeholder='Your course goal!!'></TextInput>
+        <TextInput style={styles.textInput} value={inputValue} onChangeText={goalInputHandler} placeholder='Your course goal!!'></TextInput>
         <Button title='Add Goal' onPress={addGoalHandler}></Button>
       </View>
+
       <View style={styles.goalsContainer}>
-      
-      {listOfGoals.map((user) => (
-        <Text >{user}</Text>
-      ))}
-        {/* {listOfGoals.map((goal, index) => {
-          <Text key={index}>{goal}</Text>
-        })} */}
+      {
+        listOfGoals.map((goal, index) => ( <Text style={styles.goalItem} key={index} onPress={()=>onGoalClick(index)}>{goal}</Text>))
+      }
+       
       </View>
     </View>
   );

@@ -26,6 +26,13 @@ const styles = StyleSheet.create({
   },
   goalsContainer:{
     flex: 5
+  },
+  goalItem:{
+    margin: 8,
+    padding:8,
+    borderRadius:6,
+    backgroundColor:'#5e0acc',
+    color:'#ffffff'
   }
 });
 
