@@ -28,7 +28,7 @@ export default function App() {
       {
         listOfGoals.map((goal, index) => ( <Text style={styles.goalItem} key={index} onPress={()=>onGoalClick(index)}>{goal}</Text>))
       }
-       
+     
       </View>
     </View>
   );
